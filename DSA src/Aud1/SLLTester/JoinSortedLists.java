@@ -1,31 +1,32 @@
 package Aud1.SLLTester;
 
-public class JoinSortedLists <E extends Comparable<E>>{
-    public SLL<E> join(SLL<E> list1, SLL<E> list2){
+public class JoinSortedLists<E extends Comparable<E>> {
+    public SLL<E> join(SLL<E> firstList, SLL<E> secondList) {
         SLL<E> rezultat = new SLL<E>();
-        SLLNode<E> jazol1 = list1.getFirst(), jazol2 = list2.getFirst();
+        SLLNode<E> node1 = firstList.getFirst();
+        SLLNode<E> node2 = secondList.getFirst();
 
-        while(jazol1!=null && jazol2!=null){
-            if (jazol1.element.compareTo(jazol2.element)<0){
-                rezultat.insertLast(jazol1.element);
-                jazol1=jazol1.succ;
-            } else{
-                rezultat.insertLast(jazol2.element);
-                jazol2=jazol2.succ;
+        while (node1 != null && node2 != null) {
+            if (node1.element.compareTo(node2.element) < 0) {
+                rezultat.insertLast(node1.element);
+                node1 = node1.succ;
+            } else {
+                rezultat.insertLast(node2.element);
+                node2 = node2.succ;
             }
         }
 
-        if(jazol1!=null){
-            while(jazol1!=null){
-                rezultat.insertLast(jazol1.element);
-                jazol1=jazol1.succ;
+        if (node1 != null) {
+            while (node1 != null) {
+                rezultat.insertLast(node1.element);
+                node1 = node1.succ;
             }
         }
 
-        if(jazol2!=null){
-            while(jazol2!=null){
-                rezultat.insertLast(jazol2.element);
-                jazol2=jazol2.succ;
+        if (node2 != null) {
+            while (node2 != null) {
+                rezultat.insertLast(node2.element);
+                node2 = node2.succ;
             }
         }
 
@@ -44,6 +45,6 @@ public class JoinSortedLists <E extends Comparable<E>>{
         lista2.insertLast("Darko");
 
         JoinSortedLists<String> js = new JoinSortedLists<>();
-        System.out.println(js.join(lista1,lista2));
+        System.out.println(js.join(lista1, lista2));
     }
 }
